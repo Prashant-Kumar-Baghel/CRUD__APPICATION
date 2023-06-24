@@ -15,7 +15,8 @@ const UserList = () => {
     <div className="bg-gray-300 p-5 flex items-center justify-between" key={user.id}>
       <div>
         <h3 className="font-bold text-lg text-gray-700">{user.name}</h3>
-        <span className="font-normal text-gray-600">{user.email}</span>
+        <span className="font-normal text-gray-600">{user.email}</span><br/>
+        <span className="font-normal text-gray-600">{user.mobile}</span>
       </div>
       <div className="flex gap-4">
         <Link to={`edit-user/${user.id}`}>

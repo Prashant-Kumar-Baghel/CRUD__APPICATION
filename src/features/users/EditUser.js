@@ -11,18 +11,20 @@ const EditUser = () => {
   const users = useSelector(store => store.users);
   const navigate = useNavigate();
   const existingUser = users.filter(user => user.id === params.id);
-  const { name, email } = existingUser[0];
+  const { name, email,mobile } = existingUser[0];
   const [values, setValues] = useState({
     name,
-    email
+    email,
+    mobile
   });
 
   const handleEditUser = () => {
-    setValues({ name: '', email: '' });
+    setValues({ name: '', email: '',mobie: '' });
     dispatch(editUser({
       id: params.id,
       name: values.name,
-      email: values.email
+      email: values.email,
+      mobile:values.mobile
     }));
     navigate('/');
   }
@@ -41,6 +43,13 @@ const EditUser = () => {
         value={values.email}
         onChange={(e) => setValues({ ...values, email: e.target.value })}
         inputProps={{ type: 'email', placeholder: 'jhondoe@mail.com' }}
+      />
+      <br />
+      <TextField
+        label="Mobile"
+        value={values.mobile}
+        onChange={(e) => setValues({ ...values, mobile: e.target.value })}
+        inputProps={{ type: 'mobile', placeholder: '9323372892' }}
       />
       <Button onClick={handleEditUser}>Edit</Button>
     </div>

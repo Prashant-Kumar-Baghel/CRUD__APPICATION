@@ -11,7 +11,9 @@ const AddUser = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     name: '',
-    email: ''
+    email: '',
+    mobile: ''
+
   });
 
   const handleAddUser = () => {
@@ -19,7 +21,8 @@ const AddUser = () => {
     dispatch(addUser({
       id: uuidv4(),
       name: values.name,
-      email: values.email
+      email: values.email,
+      mobile:values.mobile
     }));
     navigate('/');
   }
@@ -38,7 +41,14 @@ const AddUser = () => {
         value={values.email}
         onChange={(e) => setValues({ ...values, email: e.target.value })}
         inputProps={{ type: 'email', placeholder: 'jhondoe@mail.com' }}
-      />
+      />'
+      <br />
+      <TextField
+        label="Mobile"
+        value={values.mobile}
+        onChange={(e) => setValues({ ...values, mobile: e.target.value })}
+        inputProps={{ type: 'mobile', placeholder: '9323372892' }}
+      />'
       <Button onClick={handleAddUser}>Submit</Button>
     </div>
   )
